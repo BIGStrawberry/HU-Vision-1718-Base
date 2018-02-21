@@ -17,6 +17,10 @@ RGBImageStudent::RGBImageStudent(const RGBImageStudent& other) : RGBImage(other.
 
 RGBImageStudent::RGBImageStudent(const int width, const int height) : RGBImage(width, height), rgb(new RGB[width * height]) {}
 
+RGBImageStudent::~RGBImageStudent() {
+	delete[] rgb;
+}
+
 void RGBImageStudent::set(const int width, const int height) {
 	RGBImage::set(width, height);
 	delete[] rgb;
@@ -32,10 +36,6 @@ void RGBImageStudent::set(const RGBImageStudent& other) {
 	for (int i = 0; i < getWidth() * getHeight(); i++) {
 		rgb[i] = other.rgb[i];
 	}
-}
-
-RGBImageStudent::~RGBImageStudent() {
-	delete[] rgb;
 }
 
 void RGBImageStudent::setPixel(int x, int y, RGB pixel) {
